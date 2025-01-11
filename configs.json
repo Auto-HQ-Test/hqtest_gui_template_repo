@@ -1,0 +1,149 @@
+{
+    "modules": {
+        "test_sample_1.py": {
+            "metadata": {
+                "name": "테스트 모듈 1번",
+                "description": "샘플 파일입니다."
+            },
+            "options": {
+                "submit": true,
+                "email": true,
+                "headless": true,
+                "log": true,
+                "run": true,
+                "run_chrome": true
+            }
+        },
+        "test_sample_2.py": {
+            "metadata": {
+                "name": "테스트 모듈 2번",
+                "description": "This is a sample test module file"
+            },
+            "options": {
+                "submit": true,
+                "email": true,
+                "headless": true,
+                "log": true,
+                "run": true,
+                "run_chrome": true
+            }
+        },
+        "test_sample_3.py": {
+            "metadata": {
+                "name": "테스트 모듈 3번",
+                "description": "This is a sample test module file"
+            },
+            "options": {
+                "submit": true,
+                "email": true,
+                "headless": true,
+                "log": true,
+                "run": true,
+                "run_chrome": true
+            }
+        },
+        "test_sample_4.py": {
+            "metadata": {
+                "name": "테스트 모듈 4번",
+                "description": "This is a sample test module file"
+            },
+            "options": {
+                "submit": true,
+                "email": true,
+                "headless": true,
+                "log": true,
+                "run": true,
+                "run_chrome": true
+            }
+        },
+        "test_sample_5.py": {
+            "metadata": {
+                "name": "테스트 모듈 5번",
+                "description": "This is a sample test module file"
+            },
+            "options": {
+                "submit": true,
+                "email": true,
+                "headless": true,
+                "log": true,
+                "run": true,
+                "run_chrome": true
+            }
+        },
+        "test_sample_6.py": {
+            "metadata": {
+                "name": "테스트 모듈 6번",
+                "description": "This is a sample test module file"
+            },
+            "options": {
+                "submit": true,
+                "email": true,
+                "headless": true,
+                "log": true,
+                "run": true,
+                "run_chrome": true
+            }
+        },
+        "test_sample_7.py": {
+            "metadata": {
+                "name": "테스트 모듈 7번",
+                "description": "This is a sample test module file"
+            },
+            "options": {
+                "submit": true,
+                "email": true,
+                "headless": true,
+                "log": true,
+                "run": true,
+                "run_chrome": true
+            }
+        },
+        "test_sample_8.py": {
+            "metadata": {
+                "name": "테스트 모듈 8번",
+                "description": "This is a sample test module file"
+            },
+            "options": {
+                "submit": true,
+                "email": true,
+                "headless": true,
+                "log": true,
+                "run": true,
+                "run_chrome": true
+            }
+        },
+        "test_sample_9.py": {
+            "metadata": {
+                "name": "테스트 모듈 9번",
+                "description": "This is a sample test module file"
+            },
+            "options": {
+                "submit": true,
+                "email": true,
+                "headless": true,
+                "log": true,
+                "run": true,
+                "run_chrome": true
+            }
+        },
+        "test_sample_10.py": {
+            "metadata": {
+                "name": "테스트 모듈 10번",
+                "description": "This is a sample test module file"
+            },
+            "options": {
+                "submit": true,
+                "email": true,
+                "headless": true,
+                "log": true,
+                "run": true,
+                "run_chrome": true
+            }
+        }
+    },
+    "basic": {
+        "sender_email": "sample",
+        "recipient_email": "sample",
+        "sender_passkey": "sample"
+    }
+}
