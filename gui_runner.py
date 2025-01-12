@@ -7,7 +7,7 @@ from typing import Dict, Any, List
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
                            QHBoxLayout, QLabel, QLineEdit, QCheckBox, 
                            QPushButton, QGroupBox, QTabWidget, QMessageBox,
-                           QScrollArea, QTextEdit, QStatusBar)
+                           QScrollArea, QTextEdit, QStatusBar, QFrame)
 from PyQt5.QtCore import Qt, QThread, pyqtSignal
 from PyQt5.QtCore import QTextCodec
 from PyQt5.QtGui import QFont
@@ -243,28 +243,38 @@ class ConfigurationWindow(QMainWindow):
         
         group_box = QGroupBox("Email Settings")
         group_layout = QVBoxLayout()
-        
         description = QLabel("Configure email settings for test notifications and reports.")
         description.setWordWrap(True)
         group_layout.addWidget(description)
-        
+
+            # Add email enable checkbox
+        self.email_checkbox = QCheckBox("Enable Email Notifications")
+        self.email_checkbox.setChecked(self.config_manager.config_data["basic"].get("email", False))
+        group_layout.addWidget(self.email_checkbox)
+
+        line = QFrame()
+        line.setFrameShape(QFrame.HLine)
+        line.setFrameShadow(QFrame.Sunken)
+        group_layout.addWidget(line)
+        # Email detail inputs
         self.basic_inputs = {}
         basic_settings = self.config_manager.config_data["basic"]
         
         for key, value in basic_settings.items():
-            h_layout = QHBoxLayout()
-            label = QLabel(key.replace('_', ' ').title() + ":")
-            label.setMinimumWidth(120)
-            
-            input_field = QLineEdit()
-            input_field.setText(value)
-            if 'passkey' in key:
-                input_field.setEchoMode(QLineEdit.Password)
-            
-            h_layout.addWidget(label)
-            h_layout.addWidget(input_field)
-            self.basic_inputs[key] = input_field
-            group_layout.addLayout(h_layout)
+            if key != "email":  # Skip email bool since we handle it with checkbox
+                h_layout = QHBoxLayout()
+                label = QLabel(key.replace('_', ' ').title() + ":")
+                label.setMinimumWidth(120)
+                
+                input_field = QLineEdit()
+                input_field.setText(value)
+                if 'passkey' in key:
+                    input_field.setEchoMode(QLineEdit.Password)
+                
+                h_layout.addWidget(label)
+                h_layout.addWidget(input_field)
+                self.basic_inputs[key] = input_field
+                group_layout.addLayout(h_layout)
         
         group_box.setLayout(group_layout)
         layout.addWidget(group_box)
@@ -284,6 +294,7 @@ class ConfigurationWindow(QMainWindow):
             group_box.setStyleSheet("QGroupBox { background-color: #f0f0f0; }")
 
     def update_config_from_ui(self):
+        # Save module options
         for module, checkboxes in self.module_checkboxes.items():
             run_state = self.module_run_checkboxes[module].isChecked()
             self.config_manager.config_data["modules"][module]["options"]["run"] = run_state
@@ -291,6 +302,10 @@ class ConfigurationWindow(QMainWindow):
             for key, checkbox in checkboxes.items():
                 self.config_manager.config_data["modules"][module]["options"][key] = checkbox.isChecked()
         
+        # Save emailing options
+        self.config_manager.config_data["basic"]["email"] = self.email_checkbox.isChecked()
+        
+        # Save basic options
         for key, input_field in self.basic_inputs.items():
             self.config_manager.config_data["basic"][key] = input_field.text()
 
