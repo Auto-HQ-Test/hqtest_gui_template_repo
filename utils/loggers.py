@@ -34,7 +34,6 @@ class DebugLogger:
     
     def console(self, message: str):
         """Console print a debug message."""
-        print("Logger received message:", message)  # This line helps debug
         self.logger.info(message)
 
 from dataclasses import dataclass, field
@@ -62,17 +61,43 @@ class ModuleLog:
     status: str = None
 
 class TestLogger:
-    """Session-level test logger"""
-    def __init__(self, log_directory: str = "logs"):
-        self.log_directory = Path(log_directory)
-        self.log_directory.mkdir(exist_ok=True)
-        self.session_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        self.module_logs: Dict[str, ModuleLog] = {}
+    _instance = None
+    
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            instance = super().__new__(cls)
+            # Initialize with basic defaults
+            instance.log_directory = Path("logs")
+            instance.basic_settings = {}
+            instance.module_logs = {}
+            instance.session_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            cls._instance = instance
+        return cls._instance
+
+    def __init__(self, log_directory: Path = None, basic_settings: Dict[str, Any] = None):
+        # Update settings if provided
+        if log_directory is not None:
+            self.log_directory = log_directory
+        if basic_settings is not None:
+            self.basic_settings = basic_settings
+        self._logger = DebugLogger()
+
+    def configure(self, basic_settings: Dict[str, Any]):
+        """Update configuration after initialization"""
+        self.basic_settings = basic_settings
+    
+    @property
+    def basic_settings(self):
+        return self._basic_settings
+
+    @basic_settings.setter
+    def basic_settings(self, value):
+        print(f"Debug - basic_settings being set to: {value}")
+        self._basic_settings = value
     
     def console(self, message: str):
         """Console print a debug message."""
-        print("Logger received message:", message)  # This line helps debug
-        self.logger.info(message)
+        self._logger.console(message)
         
     def start_module(self, module_name: str, settings: Dict[str, Any]) -> ModuleLog:
         """Initialize module logging"""
@@ -114,7 +139,7 @@ class TestLogger:
         
     def _write_logs(self):
         """Write all logs to a single file with hierarchical structure"""
-        log_file = self.log_directory / f"test_session_{self.session_timestamp}.log"
+        log_file = self.log_directory / f"{self.session_timestamp}.log"
         with open(log_file, 'w', encoding='utf-8') as f:
             for log in self.module_logs.values():
                 f.write(f"Module: {log.module_name}\n")
@@ -138,10 +163,11 @@ class TestLogger:
 
     def flush(self) -> str:
         """Format test results for user display"""
+        print(f"Basic settings in flush: {self._basic_settings}")
         # Create header
         current_date = datetime.now().strftime("%m/%d")
-        lines = [f"금일 홈페이지 ({current_date})점검입니다"]
-
+        title = f"금일 홈페이지 ({current_date})점검입니다"
+        lines = [title]
         # Add each module's result
         for i in self.module_logs.items():
             print(i)
@@ -158,12 +184,48 @@ class TestLogger:
                 log_path = self.log_directory / f"test_session_{self.session_timestamp}.log"
                 status_text = f"오류!!! (상세 로그: {log_path})"
             
-            # Format: "1.메인롤링 - 이상 없음" style
+            # Format style
             result_line = f"{i}.{korean_name} - {status_text}"
             lines.append(result_line)
-
         report = "\n".join(lines)
-        return report.encode('utf-8').decode('utf-8')
+        report = report.encode('utf-8').decode('utf-8')
+
+        # Email results if configured true
+        # self.console(self.basic_settings)
+        # import pdb
+        # breakpoint()
+
+        if self.basic_settings['email']:
+            try:
+                sender_email = self.basic_settings['sender_email']
+                recipient_email = self.basic_settings['recipient_email']
+                password = self.basic_settings['sender_passkey']
+                
+                msg = EmailMessage()
+                msg['From'] = sender_email
+                msg['To'] = recipient_email
+                msg['Subject'] = title
+                msg.set_content(report)
+
+                # Connect to Gmail's SMTP server
+                with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
+                    print("Connecting to SMTP server...")
+                    smtp.starttls()
+                    print("Starting TLS...")
+                    try:
+                        smtp.login(sender_email, password)
+                        print("Login successful")
+                    except smtplib.SMTPAuthenticationError as auth_error:
+                        print(f"Authentication failed: {auth_error}")
+                        return report
+                    try:
+                        smtp.send_message(msg)
+                        print("Log sent through email successfully")
+                    except Exception as send_error:
+                        print(f"Failed to send email: {send_error}")
+            except Exception as e:
+                print(f"Email error: {e}")
+            return report
 
 class LoggingContext:
     """Maintains logging state for module execution"""
@@ -226,7 +288,6 @@ def module_logging(func: Callable):
             except Exception as e:
                 test_logger.end_module(module_name, False)
                 raise
-
     return wrapper
 
 def function_logging(func: Callable):
@@ -260,8 +321,7 @@ def function_logging(func: Callable):
                 status="Success",
                 duration=duration,
                 screenshot_path=screenshot_path
-            )
-            
+            )   
             return result
             
         except Exception as e:

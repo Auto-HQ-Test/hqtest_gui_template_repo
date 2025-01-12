@@ -21,6 +21,10 @@ def settings() -> OptionLoader:
 
 
 @pytest.fixture(scope="session")
-def test_logger():
+def test_logger(settings):
     """Session-level fixture providing the test logger instance"""
+    basic_settings = settings.get_basic_setting()
+    print(f"Configuring test_logger with basic_settings: {basic_settings}")
+    # Configure the existing instance instead of creating new one
+    test_logger_instance.configure(basic_settings)
     return test_logger_instance
