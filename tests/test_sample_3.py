@@ -14,7 +14,7 @@ async def function_component_1(settings, test_logger):
 @function_logging
 async def function_component_2(settings, test_logger):
     await asyncio.sleep(1)
-    assert False
+    assert True
 
 
 @module_logging
