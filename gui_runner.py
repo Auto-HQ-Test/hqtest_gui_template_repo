@@ -52,9 +52,8 @@ class TestRunnerThread(QThread):
         try:
             self.progress.emit("Starting test execution...")
             result = pytest.main(self.test_modules)
-            
-            import conftest
-            test_logger = conftest.test_logger_instance
+            from utils.registry import TestRegistry
+            test_logger = TestRegistry.get_logger()
             report = test_logger.flush()
             self.progress.emit("Test execution completed")
             self.finished.emit(report)

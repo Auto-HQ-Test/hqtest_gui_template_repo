@@ -1,10 +1,11 @@
 from utils.option_loader import OptionLoader
 from utils.loggers import DebugLogger, TestLogger
+from utils.registry import TestRegistry
 import pytest
 import time
 from pathlib import Path
 
-test_logger_instance = TestLogger()
+
 
 @pytest.fixture(scope="session")
 def settings() -> OptionLoader:
@@ -24,7 +25,8 @@ def settings() -> OptionLoader:
 def test_logger(settings):
     """Session-level fixture providing the test logger instance"""
     basic_settings = settings.get_basic_setting()
-    print(f"Configuring test_logger with basic_settings: {basic_settings}")
+    test_logger_instance = TestLogger(basic_settings=basic_settings)
+    TestRegistry.set_logger(test_logger_instance)
     # Configure the existing instance instead of creating new one
     test_logger_instance.configure(basic_settings)
     return test_logger_instance

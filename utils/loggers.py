@@ -61,20 +61,11 @@ class ModuleLog:
     status: str = None
 
 class TestLogger:
-    _instance = None
-    
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None:
-            instance = super().__new__(cls)
-            # Initialize with basic defaults
-            instance.log_directory = Path("logs")
-            instance.basic_settings = {}
-            instance.module_logs = {}
-            instance.session_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            cls._instance = instance
-        return cls._instance
-
     def __init__(self, log_directory: Path = None, basic_settings: Dict[str, Any] = None):
+        self.log_directory = Path("logs")
+        self.basic_settings = basic_settings
+        self.module_logs = {}
+        self.session_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         # Update settings if provided
         if log_directory is not None:
             self.log_directory = log_directory
