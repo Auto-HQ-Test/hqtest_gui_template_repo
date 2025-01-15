@@ -59,7 +59,8 @@ call venv\Scripts\activate.bat
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 
-:: Run the application
+:: Move over to the installation directory then run the application
+cd %INSTALL_DIR%
 python gui_runner.py
 
 :: Deactivate virtual environment before exit
