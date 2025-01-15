@@ -6,6 +6,7 @@ import functools
 from functools import wraps
 from email.message import EmailMessage
 from datetime import datetime
+import os
 from typing import Union, Tuple, List, Callable, Optional
 from pathlib import Path
 from contextlib import contextmanager
@@ -61,17 +62,15 @@ class ModuleLog:
     status: str = None
 
 class TestLogger:
-    def __init__(self, log_directory: Path = None, basic_settings: Dict[str, Any] = None):
-        self.log_directory = Path("logs")
+    def __init__(self, log_directory: Path = Path('logs'), basic_settings: Dict[str, Any] = None):
+        self.log_directory = log_directory
         self.basic_settings = basic_settings
         self.module_logs = {}
         self.session_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        # Update settings if provided
-        if log_directory is not None:
-            self.log_directory = log_directory
-        if basic_settings is not None:
-            self.basic_settings = basic_settings
         self._logger = DebugLogger()
+
+        if not os.path.exists(self.log_directory):
+            os.mkdir(self.log_directory)
 
     def configure(self, basic_settings: Dict[str, Any]):
         """Update configuration after initialization"""
