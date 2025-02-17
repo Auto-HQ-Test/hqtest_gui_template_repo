@@ -19,10 +19,10 @@
                 "description": "This is a sample test module file"
             },
             "options": {
-                "submit": true,
-                "headless": true,
+                "submit": false,
+                "headless": false,
                 "log": true,
-                "run": true,
+                "run": false,
                 "run_chrome": true
             }
         },
@@ -32,11 +32,11 @@
                 "description": "This is a sample test module file"
             },
             "options": {
-                "submit": true,
+                "submit": false,
                 "headless": true,
                 "log": true,
-                "run": true,
-                "run_chrome": true
+                "run": false,
+                "run_chrome": false
             }
         },
         "test_sample_4.py": {
@@ -45,11 +45,11 @@
                 "description": "This is a sample test module file"
             },
             "options": {
-                "submit": true,
+                "submit": false,
                 "headless": true,
                 "log": true,
-                "run": true,
-                "run_chrome": true
+                "run": false,
+                "run_chrome": false
             }
         },
         "test_sample_5.py": {
@@ -58,11 +58,11 @@
                 "description": "This is a sample test module file"
             },
             "options": {
-                "submit": true,
+                "submit": false,
                 "headless": true,
                 "log": true,
-                "run": true,
-                "run_chrome": true
+                "run": false,
+                "run_chrome": false
             }
         },
         "test_sample_6.py": {
@@ -71,11 +71,11 @@
                 "description": "This is a sample test module file"
             },
             "options": {
-                "submit": true,
+                "submit": false,
                 "headless": true,
                 "log": true,
-                "run": true,
-                "run_chrome": true
+                "run": false,
+                "run_chrome": false
             }
         },
         "test_sample_7.py": {
@@ -84,11 +84,11 @@
                 "description": "This is a sample test module file"
             },
             "options": {
-                "submit": true,
+                "submit": false,
                 "headless": true,
                 "log": true,
-                "run": true,
-                "run_chrome": true
+                "run": false,
+                "run_chrome": false
             }
         },
         "test_sample_8.py": {
@@ -97,11 +97,11 @@
                 "description": "This is a sample test module file"
             },
             "options": {
-                "submit": true,
+                "submit": false,
                 "headless": true,
                 "log": true,
                 "run": true,
-                "run_chrome": true
+                "run_chrome": false
             }
         },
         "test_sample_9.py": {
@@ -110,11 +110,11 @@
                 "description": "This is a sample test module file"
             },
             "options": {
-                "submit": true,
+                "submit": false,
                 "headless": true,
                 "log": true,
                 "run": true,
-                "run_chrome": true
+                "run_chrome": false
             }
         },
         "test_sample_10.py": {
@@ -123,18 +123,18 @@
                 "description": "This is a sample test module file"
             },
             "options": {
-                "submit": true,
+                "submit": false,
                 "headless": true,
                 "log": true,
                 "run": true,
-                "run_chrome": true
+                "run_chrome": false
             }
         }
     },
     "basic": {
         "email": true,
-        "sender_email": "sample",
-        "recipient_email": "sample",
-        "sender_passkey": ""
+        "sender_email": "wheatzend@gmail.com",
+        "recipient_email": "nately2nate@gmail.com",
+        "sender_passkey": "wnbm yidt qngp jkxh"
     }
 }
