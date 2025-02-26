@@ -23,7 +23,11 @@
                 "headless": false,
                 "log": true,
                 "run": false,
+<<<<<<< HEAD
                 "run_chrome": false
+=======
+                "run_chrome": true
+>>>>>>> f0370857d1b71eeb963b60fb3149fde498050f59
             }
         },
         "3_newsLetterAndNewsEvent.py": {
@@ -33,7 +37,11 @@
             },
             "options": {
                 "submit": false,
+<<<<<<< HEAD
                 "headless": false,
+=======
+                "headless": true,
+>>>>>>> f0370857d1b71eeb963b60fb3149fde498050f59
                 "log": true,
                 "run": false,
                 "run_chrome": false
@@ -100,7 +108,11 @@
                 "submit": false,
                 "headless": true,
                 "log": true,
+<<<<<<< HEAD
                 "run": false,
+=======
+                "run": true,
+>>>>>>> f0370857d1b71eeb963b60fb3149fde498050f59
                 "run_chrome": false
             }
         },
@@ -133,8 +145,14 @@
     },
     "basic": {
         "email": true,
+<<<<<<< HEAD
         "sender_email": "jun024878@gmail.com",
         "recipient_email": "jhseo44@fasoo.com",
         "sender_passkey": "zzvd pege mpze nwhl"
+=======
+        "sender_email": "wheatzend@gmail.com",
+        "recipient_email": "nately2nate@gmail.com",
+        "sender_passkey": "wnbm yidt qngp jkxh"
+>>>>>>> f0370857d1b71eeb963b60fb3149fde498050f59
     }
 }
