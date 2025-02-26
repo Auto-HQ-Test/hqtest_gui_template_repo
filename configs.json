@@ -1,140 +1,140 @@
 {
     "modules": {
-        "test_sample_1.py": {
+        "1_test_mainRolling.py": {
             "metadata": {
-                "name": "테스트 모듈 1번",
-                "description": "샘플 파일입니다."
+                "name": "메인롤링 테스트",
+                "description": "메인롤링 체크"
             },
             "options": {
-                "submit": true,
+                "submit": false,
                 "headless": true,
                 "log": true,
-                "run": true,
-                "run_chrome": true
+                "run": false,
+                "run_chrome": false
             }
         },
-        "test_sample_2.py": {
+        "2_test_download.py": {
             "metadata": {
-                "name": "테스트 모듈 2번",
-                "description": "This is a sample test module file"
+                "name": "브로셔 및 자료 다운로드 테스트",
+                "description": "다운로드 체크"
             },
             "options": {
-                "submit": true,
-                "headless": true,
+                "submit": false,
+                "headless": false,
                 "log": true,
-                "run": true,
-                "run_chrome": true
+                "run": false,
+                "run_chrome": false
             }
         },
-        "test_sample_3.py": {
+        "3_newsLetterAndNewsEvent.py": {
             "metadata": {
-                "name": "테스트 모듈 3번",
-                "description": "This is a sample test module file"
+                "name": "뉴스레터 및 뉴스이벤트 테스트",
+                "description": "뉴스레터 체크"
             },
             "options": {
-                "submit": true,
-                "headless": true,
+                "submit": false,
+                "headless": false,
                 "log": true,
-                "run": true,
-                "run_chrome": true
+                "run": false,
+                "run_chrome": false
             }
         },
-        "test_sample_4.py": {
+        "4_test_contactUS.py": {
             "metadata": {
-                "name": "테스트 모듈 4번",
-                "description": "This is a sample test module file"
+                "name": "문의하기 테스트",
+                "description": "문의하기 체크"
             },
             "options": {
-                "submit": true,
+                "submit": false,
                 "headless": true,
                 "log": true,
-                "run": true,
-                "run_chrome": true
+                "run": false,
+                "run_chrome": false
             }
         },
-        "test_sample_5.py": {
+        "5_test_brower.py": {
             "metadata": {
-                "name": "테스트 모듈 5번",
-                "description": "This is a sample test module file"
+                "name": "브라우저 테스트",
+                "description": "브라우저 체크"
             },
             "options": {
-                "submit": true,
+                "submit": false,
                 "headless": true,
                 "log": true,
-                "run": true,
-                "run_chrome": true
+                "run": false,
+                "run_chrome": false
             }
         },
-        "test_sample_6.py": {
+        "6_test_mobile.py": {
             "metadata": {
-                "name": "테스트 모듈 6번",
-                "description": "This is a sample test module file"
+                "name": "모바일 테스트",
+                "description": "모바일 체크"
             },
             "options": {
-                "submit": true,
+                "submit": false,
                 "headless": true,
                 "log": true,
-                "run": true,
-                "run_chrome": true
+                "run": false,
+                "run_chrome": false
             }
         },
-        "test_sample_7.py": {
+        "7_test_microsite.py": {
             "metadata": {
-                "name": "테스트 모듈 7번",
-                "description": "This is a sample test module file"
+                "name": "마이크로사이트 테스트",
+                "description": "마이크로사이트 체크"
             },
             "options": {
-                "submit": true,
+                "submit": false,
                 "headless": true,
                 "log": true,
-                "run": true,
-                "run_chrome": true
+                "run": false,
+                "run_chrome": false
             }
         },
-        "test_sample_8.py": {
+        "8_test_sections.py": {
             "metadata": {
-                "name": "테스트 모듈 8번",
-                "description": "This is a sample test module file"
+                "name": "집중 확인 세션 테스트",
+                "description": "집중 확인 세션 테스트"
             },
             "options": {
-                "submit": true,
+                "submit": false,
                 "headless": true,
                 "log": true,
-                "run": true,
-                "run_chrome": true
+                "run": false,
+                "run_chrome": false
             }
         },
-        "test_sample_9.py": {
+        "9_test_cancelSubscription.py": {
             "metadata": {
-                "name": "테스트 모듈 9번",
-                "description": "This is a sample test module file"
+                "name": "수신 거부 페이지 테스트",
+                "description": "수신 거부 페이지 체크"
             },
             "options": {
-                "submit": true,
+                "submit": false,
                 "headless": true,
                 "log": true,
                 "run": true,
-                "run_chrome": true
+                "run_chrome": false
             }
         },
-        "test_sample_10.py": {
+        "10_test_newLandingPage.py": {
             "metadata": {
-                "name": "테스트 모듈 10번",
-                "description": "This is a sample test module file"
+                "name": "신규 문의하기 랜딩 페이지",
+                "description": "신규 문의 페이지 체크"
             },
             "options": {
-                "submit": true,
+                "submit": false,
                 "headless": true,
                 "log": true,
                 "run": true,
-                "run_chrome": true
+                "run_chrome": false
             }
         }
     },
     "basic": {
         "email": true,
-        "sender_email": "sample",
-        "recipient_email": "sample",
-        "sender_passkey": ""
+        "sender_email": "jun024878@gmail.com",
+        "recipient_email": "jhseo44@fasoo.com",
+        "sender_passkey": "zzvd pege mpze nwhl"
     }
 }

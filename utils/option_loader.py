@@ -56,6 +56,31 @@ class OptionLoader:
             return self.get_module_options(module_name).get('run', True)
         except KeyError:
             return True  # Default to True if module not found in config
+        
+    def get_option(self, module_name: str, option_name: str, default: Any = None) -> Any:
+        """Get a specific option for a module with a default fallback.
+        
+        Args:
+            module_name (str): The name of the module.
+            option_name (str): The name of the option to retrieve.
+            default (Any, optional): The default value to return if option is not found. Defaults to None.
+        
+        Returns:
+            Any: The option value if found, otherwise the default value.
+        """
+        try:
+            return self.get_module_options(module_name).get(option_name, default)
+        except KeyError:
+            return default    
+
+    """  def get_n(self, module_name: str) -> int:
+        Get 'n' value (the number of brochures to randomly select).
+        return self.get_option(module_name, 'n', 5)
+    
+    def get_n_check_brochures(self, module_name: str) -> int:
+        Get 'n_check_brochures' value (the expected number of brochures).
+        return self.get_option(module_name, 'n_check_brochures', 10)"""
+
     
 if __name__ == "__main__":
     loader = OptionLoader("../configs.json")
